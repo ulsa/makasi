@@ -1,5 +1,7 @@
 (ns mywebapp.views
-  (:use [hiccup core page]))
+  (:use [hiccup core page])
+  (:require [hiccup.form :as f]
+            [rock-paper-scissors.core :as rps]))
 
 (defn header []
   [:div.navbar.navbar-inverse.navbar-fixed-top
@@ -8,13 +10,12 @@
      [:a.brand {:href "/"} "Cloudbees Clickstart"]
      [:div.nav-collapse.collapse
       [:ul.nav
-       [:li.active [:a {:href "/"} "Home"]]
-       [:li.active [:a {:href "/about"} "About"]]]]]]])
+       [:li.active [:a {:href "/"} "Home"]]]]]]])
 
 (defn template [& body]
   (html5
    [:head
-    [:title "Cloudbees clickstart"]
+    [:title "Rock, paper, scissor"]
     [:meta {:name "viewport"
             :content "width=device-width, initial-scale=1.0"}]
     (include-css "/css/bootstrap.min.css")]
@@ -25,32 +26,28 @@
 
 (defn index-page []
   (template
-   
-   [:div {:class "hero-unit"}
-    [:h1 "Clojure on Cloudbees"]
-    [:p "Welcome to the Clojure Clickstart!"]
-    [:p
-     [:a {:class "btn btn-primary btn-large"
-          :href "http://developer.cloudbees.com/bin/view/Main/"}
-      "Get help with Cloudbees."]]]
-      
-      [:div {:class "well"}
-        [:p
-          [:h3 "Next steps"]
-          [:ul
-            [:li (str "Make sure you have an ssh public key setup on" 
-                      "<a href=\"https://grandcentral.cloudbees.com/user/ssh_keys\">
-                      Cloudbees</a> and then run:")]
-            [:li 
-              [:code (str 
-                      "git clone ssh://git@git.cloudbees.com/"
-                      "<script>document.write"
-                        "(location.hostname.split(\".\")[1])</script>"
-                      "/<script>document.write"
-                      "(location.hostname.split(\".\")[0])</script>.git")]]
-            [:li "Make your changes and then push to the git repo"]  
-            [:li "This will trigger a build and deploy cycle on cloudbees"]]]]))
 
+   [:div {:class "hero-unit"}
+    [:h1 "Rock, paper, scissor, the Clojure way"]
+    [:p "Play by entering rock, paper or scissor below."]
+    (f/form-to
+     [:post "/result"]
+     (f/label "p1" "Player 1")
+
+                       (f/text-field "p1")
+                       [:br]
+                       (f/label "p2" "Player 2")
+                       (f/text-field "p2")
+                       [:br]
+                       (f/submit-button "Play"))]))
+
+(defn result-page [p1 p2]
+  (template
+     [:div {:class "hero-unit"}
+    [:h1 "Result"]
+     [:div (name (rps/winner (keyword p1) (keyword p2)))]]))
+
+#_
 (defn about-page []
   (template
    [:div {:class "well"}

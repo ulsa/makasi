@@ -7,7 +7,7 @@
 
 (defroutes app-routes
   (GET "/" [] (index-page))
-  (GET "/about" [] (about-page))
+  (POST "/result" [p1 p2] (result-page p1 p2))
   (route/resources "/")
   (route/not-found "No page"))
 
