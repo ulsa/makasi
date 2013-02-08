@@ -29,17 +29,15 @@
 
    [:div {:class "hero-unit"}
     [:h1 "Rock, paper, scissor, the Clojure way"]
-    [:p "Play by entering rock, paper or scissor below."]
     (f/form-to
      [:post "/result"]
      (f/label "p1" "Player 1")
-
-                       (f/text-field "p1")
-                       [:br]
-                       (f/label "p2" "Player 2")
-                       (f/text-field "p2")
-                       [:br]
-                       (f/submit-button "Play"))]))
+     (f/drop-down "p1" rps/choices)
+     [:br]
+     (f/label "p2" "Player 2")
+     (f/drop-down "p2" rps/choices)
+     [:br]
+     (f/submit-button "Play"))]))
 
 (defn result-page [p1 p2]
   (template
