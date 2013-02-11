@@ -7,7 +7,7 @@
   [:div.navbar.navbar-inverse.navbar-fixed-top
    [:div.navbar-inner
     [:div.container
-     [:a.brand {:href "/"} "Cloudbees Clickstart"]
+     [:a.brand {:href "/"} "Makasi"]
      [:div.nav-collapse.collapse
       [:ul.nav
        [:li.active [:a {:href "/"} "Home"]]]]]]])
