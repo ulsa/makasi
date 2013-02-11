@@ -31,10 +31,10 @@
     [:h1 "Rock, paper, scissors, the Clojure way"]
     (f/form-to
      [:post "/result"]
-     (f/label "p1" "Player 1")
+     (f/label "p1" "Player 1:")
      (f/drop-down "p1" rps/choices)
      [:br]
-     (f/label "p2" "Player 2")
+     (f/label "p2" "Player 2:")
      (f/drop-down "p2" rps/choices)
      [:br]
      (f/submit-button "Play"))]))
