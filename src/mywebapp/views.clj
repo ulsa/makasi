@@ -15,7 +15,7 @@
 (defn template [& body]
   (html5
    [:head
-    [:title "Rock, paper, scissor"]
+    [:title "Rock, paper, scissors"]
     [:meta {:name "viewport"
             :content "width=device-width, initial-scale=1.0"}]
     (include-css "/css/bootstrap.min.css")]
@@ -28,7 +28,7 @@
   (template
 
    [:div {:class "hero-unit"}
-    [:h1 "Rock, paper, scissor, the Clojure way"]
+    [:h1 "Rock, paper, scissors, the Clojure way"]
     (f/form-to
      [:post "/result"]
      (f/label "p1" "Player 1")
