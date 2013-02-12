@@ -44,19 +44,3 @@
      [:div {:class "hero-unit"}
     [:h1 "Result"]
      [:div (name (rps/winner (keyword p1) (keyword p2)))]]))
-
-#_
-(defn about-page []
-  (template
-   [:div {:class "well"}
-    [:h1 "About This:"]
-    [:p "This Clojure clickstart was developed by members of the "
-     [:a {:href "http://www.meetup.com/Austin-Clojure-Meetup/"} "Austin Clojure Meetup"]
-     ".  You can find us as "
-     [:a {:href "https://github.com/AustinClojure"} "AustinClojure on github"]
-     "."]
-     [:h1 "About ClickStarts:"]
-      "Read about what ClickStarts are "
-     [:a {:href "https://developer.cloudbees.com/bin/view/RUN/ClickStart"} "at CloudBees"]
-
-     ]))
